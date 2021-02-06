@@ -36,8 +36,10 @@ public class MiniController {
 	
 	@PostMapping("/register")
 	public String register(MiniVO mini, RedirectAttributes rttr) {
+		log.info(mini);
 		service.register(mini);
-		return "redirect:/todo/list";
+		rttr.addFlashAttribute("result", "사연전송 완료");
+		return "redirect:/mini/list";
 	}
 	
 	

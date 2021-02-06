@@ -16,6 +16,29 @@
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<style type="text/css">
+.container-sm {
+width: 600px;
+
+}
+
+#title {
+text-align: center; 
+margin-top: 50px; 
+margin-bottom: 30px;
+
+}
+
+#formBox {
+border: 1px solid lightgray; 
+padding-top: 20px;
+padding-bottom: 15px;
+margin-top: 20px;
+margin-bottom: 20px;
+}
+
+</style>
+
 <script type="text/javascript">
 $(document).ready(function(){
 	var actionForm = $("#actionForm");
@@ -33,15 +56,37 @@ $(document).ready(function(){
 <title>미니게시판</title>
 </head>
 <body>
-	<div class="container-sm" style="width: 500px;">
-		<div class="row justify-content-center" style="text-align: center; margin-top: 50px; margin-bottom: 30px;">
-			<h1>장유라의 stary night</h1>
+	<div class="container-sm" >
+		<div id="title" class="row justify-content-center" >
+			<h1>문진수의 별이 빛나는 밤에</h1>
+		</div>
+	</div>
+	
+	<div id="formBox" class="container-sm" >
+		<div class="row justify-content-center">
+			<form action="/mini/register" method="post">
+				<div class="form-row">
+				  <div class="form-group col-md-3">
+				    <label for="inputWriter">아이디</label>
+				    <input name="writer" type="text" class="form-control" id="inputWriter">
+				  </div>
+				  
+				
+				  <div class="form-group col-md-7">
+				    <label for="inputContent">사연</label>
+				    <input name="content" type="text" class="form-control" id="inputContent" placeholder="사연을 입력하세요.">
+				  </div>
+				  
+				  <div class="form-group col-md-2" style="margin-top: 32px;">
+			  		<button type="submit" class="btn btn-light">보내기</button>
+				  </div>
+				 </div>
+			</form>
 		</div>
 	</div>
 	
 	
-	
-	<div class="container-sm" style="width: 500px;">
+	<div class="container-sm">
 		<div class="row justify-content-center">
 			<table class="table table-dark" style="text-align: left; ">
 
@@ -58,10 +103,10 @@ $(document).ready(function(){
 	</div>
 	
 	
-	<div class="container-sm" style="width: 500px;">
+	<div class="container-sm">
 		<div class="row justify-content-center">
-			<nav aria-label="Page navigation example">
-			  <ul class="pagination pagination-sm">
+			<nav aria-label="Page navigation example" style="margin:15px;">
+			  <ul class="pagination">
 			  
 			  <c:if test="${pageMaker.prev }">
 			    <li class="page-item">
