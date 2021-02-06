@@ -4,6 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.radio.mapper.MiniMapper">
+<sql id="criteria">
+	<where>
+		<foreach item="type" collection="typeArr" separator="OR">
+			<choose>
+				<when test="type == 'C'.toString()">
+					content LIKE '%' || #{keyword} || '%'
+				</when>
+				<when test="type == 'W'.toString()">
+					writer LIKE '%' || #{keyword} || '%'
+				</when>
+			</choose>
+		</foreach>
+	</where>
+</sql>
 
 <select id="getList" resultType="com.radio.domain.MiniVO">
 <![CDATA[
@@ -22,7 +36,13 @@ FROM
         num, content, writer, regdate
 
     FROM
-        tbl_mini)
+        tbl_mini
+]]>
+
+<include refid="criteria"></include>
+
+<![CDATA[        
+        )
 WHERE rn between ((#{pageNum}-1) * #{amount}) + 1 and #{pageNum} * #{amount}
 ]]>
 </select>
@@ -43,5 +63,6 @@ values (seq_mini.nextval, #{content}, #{writer})
 
 <select id="getTotalCount" resultType="int">
 	select count(*) from tbl_mini
+	<include refid="criteria"></include>
 </select>
 </mapper>

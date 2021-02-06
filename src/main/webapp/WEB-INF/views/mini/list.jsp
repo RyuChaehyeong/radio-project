@@ -58,26 +58,25 @@ $(document).ready(function(){
 <body>
 	<div class="container-sm" >
 		<div id="title" class="row justify-content-center" >
-			<h1>문진수의 별이 빛나는 밤에</h1>
+			<h1><i class="fas fa-star-and-crescent"></i> 문진수의 별이 빛나는 밤에 <i class="fas fa-star-and-crescent"></i></h1>
 		</div>
 	</div>
 	
 	<div id="formBox" class="container-sm" >
+	<h5> &emsp; <i class="far fa-envelope"></i> mini 메세지 보내기</h5>
 		<div class="row justify-content-center">
-			<form action="/mini/register" method="post">
+			<form action="/mini/register" method="post" style="margin-top: 15px; ">
+			
 				<div class="form-row">
 				  <div class="form-group col-md-3">
-				    <label for="inputWriter">아이디</label>
-				    <input name="writer" type="text" class="form-control" id="inputWriter">
+				    <input name="writer" type="text" class="form-control" id="inputWriter" placeholder="아이디">
+				  </div>
+
+				  <div class="form-group col-md-7">				   
+				    <input name="content" type="text" class="form-control" id="inputContent" placeholder="오늘은 어떤 일이 있었나요?">
 				  </div>
 				  
-				
-				  <div class="form-group col-md-7">
-				    <label for="inputContent">사연</label>
-				    <input name="content" type="text" class="form-control" id="inputContent" placeholder="사연을 입력하세요.">
-				  </div>
-				  
-				  <div class="form-group col-md-2" style="margin-top: 32px;">
+				  <div class="form-group col-md-2">
 			  		<button type="submit" class="btn btn-light">보내기</button>
 				  </div>
 				 </div>
@@ -88,13 +87,17 @@ $(document).ready(function(){
 	
 	<div class="container-sm">
 		<div class="row justify-content-center">
+			
+			
+			<c:if test="${empty list  }"> 해당 내역이 없습니다. </c:if>
+			
 			<table class="table table-dark" style="text-align: left; ">
 
 			  <tbody>
 			  <c:forEach items="${list }" var="mini">
 			     <tr>
-				     <td style="padding-left: 50px;"><c:out value="${mini.writer }"/>&emsp; &emsp; &emsp;<fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value= "${mini.regdate }"/>
-				     <br><c:out value="${mini.content }"/> </td>
+				     <td style="padding-left: 50px; padding-top: 20px; padding-bottom: 20px;"><c:out value="${mini.writer }"/>&emsp; &emsp; &emsp;<fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value= "${mini.regdate }"/>
+				     <br><br><c:out value="${mini.content }"/> </td>
 			    </tr>
 			  </c:forEach>
 			  </tbody>
@@ -139,6 +142,9 @@ $(document).ready(function(){
 				<form id="actionForm" action="${root }/mini/list">
 					<input name="pageNum" value="${pageMaker.cri.pageNum }"/>
 					<input name="amount" value="${pageMaker.cri.amount }"/>
+					<input name="type" value="${pageMaker.cri.type }"/>
+					<input name="keyword" value="${pageMaker.cri.keyword }"/>
+					
 					<input type="submit">
 				</form>
 			</div>
@@ -146,5 +152,24 @@ $(document).ready(function(){
 		</div>
 	</div>
 	
+	
+	<div id="formBox" class="container-sm" style="margin-bottom: 100px;" >
+		<div class="row justify-content-center">
+			 <form action="${root }/mini/list" id="searchForm" class="form-inline my-2 my-lg-0">
+			     <select name="type" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+				    <option value="W" ${cri.type eq 'W' ? 'selected' : ''} >아이디</option>
+				    <option value="C" ${cri.type eq 'C' ? 'selected' : '' }>사연</option>
+				    <option value="WC" ${cri.type eq 'WC' ? 'selected' : '' }>전체</option>
+				  </select>
+			  
+			      <input required="required" name="keyword"	value="${cri.keyword }" class="form-control mr-sm-2" type="search" placeholder="검색어를 입력하세요." aria-label="Search">
+			      <input type="hidden" name="pageNum" value="1"/>
+			      <input type="hidden" name="amount" value="${cri.amount}"/>
+			      
+			      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+	   		 </form>
+		
+		</div>
+	</div>
 </body>
 </html>

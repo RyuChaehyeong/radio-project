@@ -31,8 +31,8 @@ public class MiniSeriviceImpl implements MiniService {
 	}
 
 	@Override
-	public int getTotal() {
-		return mapper.getTotalCount();
+	public int getTotal(Criteria cri) {
+		return mapper.getTotalCount(cri);
 	}
 
 	@Override

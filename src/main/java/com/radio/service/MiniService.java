@@ -12,6 +12,6 @@ public interface MiniService {
 	
 	public void register(MiniVO mini);
 	
-	public int getTotal();
+	public int getTotal(Criteria cri);
 
 }

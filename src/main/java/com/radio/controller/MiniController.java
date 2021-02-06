@@ -26,7 +26,7 @@ public class MiniController {
 	
 	@GetMapping("/list")
 	public void list (@ModelAttribute("cri") Criteria cri, Model model) {
-		int total = service.getTotal();
+		int total = service.getTotal(cri);
 		PageDTO dto = new PageDTO(cri, total);
 		
 		model.addAttribute("list", service.getListWithPaging(cri));

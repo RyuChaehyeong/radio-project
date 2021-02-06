@@ -16,5 +16,5 @@ public interface MiniMapper {
 	
 	public void insertSelectKey(MiniVO mini);
 	
-	public int getTotalCount();
+	public int getTotalCount(Criteria cri);
 }

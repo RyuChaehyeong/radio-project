@@ -51,9 +51,10 @@ public class MiniServiceTests {
 		Criteria cri = new Criteria(1, 10);
 		service.getListWithPaging(cri);
 	}
-	
+	/*
 	@Test
 	public void testGetTotal() {
 		log.info(service.getTotal());
 	}
+	*/
 }

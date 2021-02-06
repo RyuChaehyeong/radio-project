@@ -51,9 +51,10 @@ public class MiniMapperTests {
 		log.info(mini);
 	}
 
+	/*
 	@Test
 	public void testGetTotalCount() {
 		log.info(mapper.getTotalCount());
 	}
-
+	*/
 }
