@@ -23,20 +23,48 @@ width: 600px;
 }
 
 #title {
-text-align: center; 
-margin-top: 50px; 
-margin-bottom: 30px;
+	text-align: center; 
+	margin-top: 50px; 
+	margin-bottom: 30px;
 
 }
 
 #formBox {
-border: 1px solid lightgray; 
-padding-top: 20px;
-padding-bottom: 15px;
-margin-top: 20px;
-margin-bottom: 20px;
+	border: 1px solid lightgray; 
+	padding-top: 20px;
+	padding-bottom: 15px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
+.pagination > li > a
+{
+    background-color: white;
+    color: #30366b;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #5a5a5a;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #30366b !Important;
+    border: solid 1px #30366b !Important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #5A4181 !Important;
+    border: solid 1px #5A4181;
+}
 </style>
 
 <script type="text/javascript">
@@ -108,19 +136,19 @@ $(document).ready(function(){
 	
 	<div class="container-sm">
 		<div class="row justify-content-center">
-			<nav aria-label="Page navigation example" style="margin:15px;">
+			<nav aria-label="Page navigation example" style="margin-top:23px;">
 			  <ul class="pagination">
 			  
 			  <c:if test="${pageMaker.prev }">
-			    <li class="page-item">
+			    <li class="page-item" >
 			    <!-- <a class="page-link" href="${prevLink }">Previous</a> -->
-			    <a class="page-link" href="${pageMaker.startPage-1 }">Previous</a>
+			    <a class="page-link" href="${pageMaker.startPage-1 }">이전</a>
 			    </li>
 			  </c:if>
 			  
 			  <c:forEach var="pageNo" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
 			
-			    <li class="page-item ${pageMaker.cri.pageNum eq pageNo ? 'active' : '' }">
+			    <li class="page-item ${pageMaker.cri.pageNum eq pageNo ? 'active' : '' } ">
 			   <!--  <a class="page-link" href="${pageLink }">${pageNo }</a>  -->
 			   <a class="page-link" href="${pageNo }">${pageNo }</a>
 			    </li>
@@ -131,7 +159,7 @@ $(document).ready(function(){
 	   		
 			    <li class="page-item">
 			    <!-- <a class="page-link" href="${nextLink }">Next</a> -->
-			    <a class="page-link" href="${pageMaker.endPage+1 }">Next</a>
+			    <a class="page-link" href="${pageMaker.endPage+1 }">다음</a>
 			    </li>		   
 			  </c:if>
 			  
@@ -166,7 +194,7 @@ $(document).ready(function(){
 			      <input type="hidden" name="pageNum" value="1"/>
 			      <input type="hidden" name="amount" value="${cri.amount}"/>
 			      
-			      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+			      <button class="btn btn-light my-2 my-sm-0" type="submit">검색</button>
 	   		 </form>
 		
 		</div>
