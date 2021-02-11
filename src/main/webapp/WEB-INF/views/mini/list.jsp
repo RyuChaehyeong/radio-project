@@ -81,7 +81,7 @@ $(document).ready(function(){
 </script>
 
 
-<title>미니게시판</title>
+<title>mini 메시지</title>
 </head>
 <body>
 	<div class="container-sm" >
@@ -91,7 +91,7 @@ $(document).ready(function(){
 	</div>
 	
 	<div id="formBox" class="container-sm" >
-	<h5> &emsp; <i class="far fa-envelope"></i> mini 메세지 보내기</h5>
+	<h5> &emsp; &nbsp; <i class="far fa-envelope"></i> mini 메세지 보내기</h5>
 		<div class="row justify-content-center">
 			<form action="/mini/register" method="post" style="margin-top: 15px; ">
 			
@@ -119,7 +119,7 @@ $(document).ready(function(){
 			
 			<c:if test="${empty list  }"> 해당 내역이 없습니다. </c:if>
 			
-			<table class="table table-dark" style="text-align: left; ">
+			<table class="table table-dark" style="text-align: left;">
 
 			  <tbody>
 			  <c:forEach items="${list }" var="mini">
@@ -186,7 +186,7 @@ $(document).ready(function(){
 			 <form action="${root }/mini/list" id="searchForm" class="form-inline my-2 my-lg-0">
 			     <select name="type" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
 				    <option value="W" ${cri.type eq 'W' ? 'selected' : ''} >아이디</option>
-				    <option value="C" ${cri.type eq 'C' ? 'selected' : '' }>사연</option>
+				    <option value="C" ${cri.type eq 'C' ? 'selected' : '' }>내용</option>
 				    <option value="WC" ${cri.type eq 'WC' ? 'selected' : '' }>전체</option>
 				  </select>
 			  

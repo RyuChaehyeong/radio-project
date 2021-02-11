@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="com.radio.mapper.MemberMapper">
+	<resultMap type="com.radio.domain.MemberVO" id="memberMap">
+		<id property="id" column="member_id"/>
+		<result property="bno" column="member_bno"/>
+		<result property="name" column="member_name"/>
+		<result property="password" column="member_password"/>
+		<result property="email" column="member_email"/>
+		<result property="add1" column="member_address1"/>
+		<result property="add2" column="member_address2"/>
+		<result property="add3" column="member_address3"/>
+		<result property="add4" column="member_address4"/>
+		<result property="grade" column="member_grade"/>
+		<result property="regdate" column="regdate"/>
+		
+		<collection property="authList" resultMap="authMap"></collection>
+	</resultMap>
+	
+	<resultMap type="com.radio.domain.AuthVO" id="authMap">
+		<result property="id" column="member_id"/>
+		<result property="auth" column="auth"/>
+	</resultMap>
+	
+	<select id="read" resultMap="memberMap">
+		select mem.member_id, member_password, member_name, enabled, regdate, auth
+		from tbl_member mem LEFT OUTER JOIN tbl_member_auth auth on mem.member_id = auth.member_id
+		where mem.member_id = #{id}
+	</select>
+
+</mapper>
