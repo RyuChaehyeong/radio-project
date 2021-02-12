@@ -9,8 +9,10 @@
 <!-- 
 	<bean id="customLoginSuccess" class="org.zerock.security.CustomLoginSuccessHandler"></bean>
  -->
+ <!-- 
 	<bean id="customLoginSuccess2" 
 	class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler"></bean>
+  -->
 	<!-- 
 	<bean id="customPasswordEncoder" class="org.zerock.security.CustomNoOpPasswordEncoder"></bean>
 	 -->
@@ -25,7 +27,10 @@
 		<security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')"/>
 		
 		<security:access-denied-handler ref="customAccessDenied"/>
+		<security:form-login login-page="/customLogin"/>
+		<!-- 
 		<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess2"/>
+		 -->
 
 		<security:logout invalidate-session="true"
 		 delete-cookies="remember-me, JSESSION_ID" logout-success-url="/"/>

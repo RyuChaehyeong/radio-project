@@ -122,28 +122,40 @@ $(document).ready(function(){
 		</div>
 	</div>
 	
-	<div id="formBox" class="container-sm" >
+	<div id="formBox" class="container-sm " >
 	<h5> &emsp; &nbsp; <i class="far fa-envelope"></i> mini 메세지 보내기</h5>
-		<div class="row justify-content-center">
-			<form action="/mini/register" method="post" style="margin-top: 15px; ">
-			
-				<div class="form-row">
-				  <div class="form-group col-md-3">
-				    <input name="writer" type="text" class="form-control" id="inputWriter" placeholder="아이디">
-				  </div>
-
-				  <div class="form-group col-md-7">				   
-				    <input name="content" type="text" class="form-control" id="inputContent" placeholder="오늘은 어떤 일이 있었나요?">
-				  </div>
-				  
-				  <div class="form-group col-md-2">
-			  		<button type="submit" class="btn btn-light">보내기</button>
-				  </div>
+			<form action="/mini/register" method="post" style="margin-top: 15px; padding-left: 20px;">
+					<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}"/>
+				  <div class="row justify-content-center">
+				
+				
+				<sec:authorize access="isAuthenticated()">
+				    <div class="col-3">
+				   	 <input name="writer"  type="text" class="form-control"  
+				   	 value='<sec:authentication property="principal.username"/>' id="inputContent" readonly>
+					</div>
+				</sec:authorize>
+				
+				
+				<sec:authorize access="isAnonymous()">		
+				 	<div class="col-3">		
+				   	 <input name="writer"  type="text" class="form-control" placeholder="아이디"  id="inputContent" readonly>
+				   	</div>
+				</sec:authorize>
+				
+				
+				    <div class="col-6">
+				   	 <input name="content" type="text" class="form-control" id="inputContent" placeholder="오늘은 어떤 일이 있었나요?">
+					</div>
+					
+					<div class="col">
+			  			<button type="submit" class="btn btn-light">보내기</button>
+					</div>
 				 </div>
+				
 			</form>
 		</div>
-	</div>
-	
+
 	
 	<div class="container-sm">
 		<div class="row justify-content-center">

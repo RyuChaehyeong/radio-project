@@ -23,7 +23,7 @@
     }
     body {
         
-        background-image: url('pexels-john-walker-827898.jpg');
+  
         background-size: cover;
         
     }
