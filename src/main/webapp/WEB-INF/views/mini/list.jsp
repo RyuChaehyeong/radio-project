@@ -2,6 +2,7 @@
   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -84,6 +85,37 @@ $(document).ready(function(){
 <title>mini 메시지</title>
 </head>
 <body>
+	<div class="container">
+		
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		
+				  <div class="collapse navbar-collapse" id="navbarNav">
+				    <ul class="navbar-nav">
+				      <li class="nav-item active">
+			       		 <a class="nav-link" href="#">회원가입 <span class="sr-only">(current)</span></a>
+			      	</li>
+			      <sec:authorize access="isAnonymous()">
+				      <li class="nav-item">
+				        <a class="nav-link" href="/customLogin">로그인</a>
+				      </li>
+			      </sec:authorize>
+			      
+			      <sec:authorize access="isAuthenticated()">
+				      <li class="nav-item">
+			      	<form action="/logout" method="post">
+				        <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+				        <button type="submit" class="btn btn-outline-dark btn-sm">로그아웃</button>
+			      	</form>
+				      </li>
+			      </sec:authorize>
+				   
+				    </ul>
+				  </div>
+				</nav>
+		</div>
+
+
+
 	<div class="container-sm" >
 		<div id="title" class="row justify-content-center" >
 			<h1><i class="fas fa-star-and-crescent"></i> 문진수의 별이 빛나는 밤에 <i class="fas fa-star-and-crescent"></i></h1>

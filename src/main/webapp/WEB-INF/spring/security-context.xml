@@ -9,7 +9,8 @@
 <!-- 
 	<bean id="customLoginSuccess" class="org.zerock.security.CustomLoginSuccessHandler"></bean>
  -->
-	<bean id="customLoginSuccess2" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler"></bean>
+	<bean id="customLoginSuccess2" 
+	class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler"></bean>
 	<!-- 
 	<bean id="customPasswordEncoder" class="org.zerock.security.CustomNoOpPasswordEncoder"></bean>
 	 -->
@@ -27,7 +28,7 @@
 		<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess2"/>
 
 		<security:logout invalidate-session="true"
-		 delete-cookies="remember-me, JSESSION_ID" logout-success-url="/todo/list"/>
+		 delete-cookies="remember-me, JSESSION_ID" logout-success-url="/"/>
 
 		<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>
 		<!-- 
