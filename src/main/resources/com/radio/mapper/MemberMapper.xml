@@ -27,7 +27,7 @@
 	</resultMap>
 	
 	<select id="read" resultMap="memberMap">
-		select mem.member_id, member_password, member_name, enabled, regdate, auth
+		select mem.member_id, member_password, member_name, member_email, member_address1, member_address2, member_address3, member_address4, enabled, regdate, auth
 		from tbl_member mem LEFT OUTER JOIN tbl_member_auth auth on mem.member_id = auth.member_id
 		where mem.member_id = #{id}
 	</select>
