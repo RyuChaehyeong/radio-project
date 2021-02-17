@@ -66,21 +66,16 @@ public class MemberController {
 		return "/member/authnum";
 	}
 
-	@PostMapping("/authnum")
-	public String authnum(String serverKey, String userKey, String id, Model model) {
-		if (serverKey.equals(userKey)) {
-			model.addAttribute("id", id);
-
-		} else {
-			model.addAttribute("failMsg", "인증번호가 일치하지 않습니다.");
-		}
-
-		return "/member/yourid";
-	}
 
 	@PostMapping("/yourid")
-	public void yourid() {
-
+	public void yourid(String serverKey, String userKey, String id, Model model) {
+		model.addAttribute("id", id);
+		
+		if (!serverKey.equals(userKey)) {
+			model.addAttribute("AuthenticationKey", serverKey);
+			model.addAttribute("failMsg", "인증번호가 일치하지 않습니다.");
+		} 
+		
 	}
 
 	@GetMapping("/findpw")
@@ -110,6 +105,7 @@ public class MemberController {
 	@PostMapping("/authnum_pw")
 	public String authnu_pw(String serverKey, String userKey, Model model) {
 		if (serverKey.equals(userKey)) {
+			
 			return "/member/resetpw";
 
 		} else {
@@ -122,7 +118,8 @@ public class MemberController {
 
 	@PostMapping("/resetpw")
 	public String resetpw(String id, String password, String ch_password, Model model) {
-
+		
+		
 		if (ch_password.equals(password)) {
 
 			String encodepw = pwencoder.encode(password);
@@ -136,10 +133,17 @@ public class MemberController {
 				return "/member/resetpw";
 			}
 
-		} else {
+		} else if (!ch_password.equals(password)){
 			model.addAttribute("unEqual", "확인 비밀번호가 일치하지 않습니다.");
 			return "/member/resetpw";
 
+		//수정수정
+		} else if (id == null) {
+			model.addAttribute("noExist", "아이디를 확인해주세요.");
+			return "/member/resetpw";
+			
+		} else {
+			return null;
 		}
 
 	}
@@ -190,14 +194,16 @@ public class MemberController {
 		// email 전송
 		try {
 			MimeMessage msg = new MimeMessage(session);
-			msg.setFrom(new InternetAddress(user, "진수성찬 문진수입니다!"));
+			msg.setFrom(new InternetAddress(user, "진수성찬 DJ진수입니다!"));
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
 
 			// 메일 제목
-			msg.setSubject("[이메일인증] 진수성찬 문진수입니다! 라디오 인증메일입니다.");
+			msg.setSubject("[이메일인증] 진수성찬 DJ진수입니다! 라디오 인증메일입니다.");
 			// 메일 내용
-			msg.setText("안녕하세요. 진수성찬 문진수입니다! \n홈페이지에서 다음 인증번호를 입력하세요.\n인증 번호 :" + temp);
+			msg.setText("안녕하세요. 진수성찬  DJ진수입니다! \n\n홈페이지에서 다음 인증번호를 입력하세요.\n\n*************************************\n                "
+			+ temp +"\n*************************************");
 
+					
 			Transport.send(msg);
 			System.out.println("이메일 전송");
 

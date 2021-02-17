@@ -1,0 +1,150 @@
+@charset "UTF-8";
+*{
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        
+        background-image: url('resources/pic/background.jpg);
+        background-size: cover;
+        
+    }
+   .wrapper{      
+        margin: 0 10% 0 10%;
+        display: grid;
+        grid-gap: 15px;
+        height: 100%;
+        grid-template-columns: 1fr 300px 300px 300px 300px 1fr;
+        grid-template-rows:  200px 50px 80px 150px 200px 200px;
+        grid-template-areas: 'empty3 header header header header empty4'
+                             'empty3 nav nav nav nav empty4'
+                             'empty3 today today today today empty4'
+                             'empty3 corner weekday SNS every empty4'
+                             'empty3 list weekday listener every empty4'
+                             'empty3 list radio empty2 empty1 empty4                            
+   }
+   .wrapper div{
+        border-radius: 5px 5px;      
+        text-align: inherit;
+        display: grid;
+   }
+   .header{
+        grid-area: header;
+        color: thistle;
+   }
+   .nav{
+        background-color: snow;
+        grid-area: nav;
+   }
+   .today{
+        background-color: snow;
+        grid-area: today;
+   }
+   .coner{
+        background-color: snow;
+        grid-area: coner;
+   }
+   .list{
+        background-color: snow;
+        grid-area: list;
+   }
+   .weekday{
+        background-color: snow;
+        grid-area: weekday;
+   }
+   .radio{
+        background-color: snow;
+        grid-area: radio;
+   }
+   .listener{
+        background-color: snow;
+        grid-area: listener;
+   }
+   .SNS{
+        background-color: snow;
+        grid-area: SNS;
+   }
+   .empty1 {
+        grid-area: empty1;
+   }
+   .empty2 {
+        grid-area: empty2;
+   }
+   .every{
+        background-color: snow;
+        grid-area: every;
+   }
+   
+   
+   button {      
+        padding-left: 30px;
+        padding-right: 30px;
+        border: none;
+        outline: none;
+        border-radius: 5px 5px;
+        background-color: thistle; 
+        color: white;
+   }
+   button:hover {
+       
+       cursor: pointer;
+   }
+   .nav .nav-flex { 
+       display: flex;
+       padding-left: 30px;
+       padding-right: 30px;
+       border: none;
+       outline: none;
+       border-radius: 5px 5px;
+       align-items: center;
+       justify-content: center;
+       background-color: thistle;
+       
+   }
+   .title {
+       padding: 10px 10px 0px 10px;
+   }
+
+   .header h1 {
+       text-align: center;
+       margin-top: 80px;
+   }
+
+   .header2 .header-nav{
+       display: flex;
+       background-color: black;
+       height: 40px;
+       justify-content: flex-end;
+   }
+
+   .header2 .header-nav .header-button {
+       background-color: black;
+   }
+
+   .footer{
+       height: 200px; 
+       background-color: rgb(216, 161, 88);
+       margin-top: 30px;
+       width: 100%;
+   }
+
+   i {
+       color: grey;
+       margin-right: 5px;
+   }
+   .everyDay li {
+       padding: 0px 5px 10px 20px;
+   }
+
+   .week {
+       background-color: black;
+       color: white;
+   }
+
+   ul {
+       margin: 10%;
+   }
+
+   ul li{
+       padding: 10px;
+   }

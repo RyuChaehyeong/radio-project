@@ -64,20 +64,8 @@
         </div>  
         					
 
-       <div class="main" style="padding: 100px;">
-       		<h1>아이디 찾기</h1>
-			<h5>회원가입시 사용한 이메일을 입력해주세요.</h5>
-			
-			<form action="${root }/member/findid" method="post">
-				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}"/>
-				<div class="form-group">
-				    <label for="input-email">이메일</label>
-				    <input name="email" type="email" class="form-control" id="input-email" style="width: 300px;">
-				</div>
-			
-				
-				<button id="loginBtn" type="submit" style="margin-top: 20px;">아이디 찾기</button>
-			</form>
+       <div class="main">
+       		<jsp:include page="/resources/include/mini.jsp"/>
        </div>
        
         <div class="empty1">
@@ -95,5 +83,4 @@
 
 
 </body>
-
 </html>
