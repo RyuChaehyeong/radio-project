@@ -16,6 +16,8 @@
 	<!-- 
 	<bean id="customPasswordEncoder" class="org.zerock.security.CustomNoOpPasswordEncoder"></bean>
 	 -->
+	 
+
 	 <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 	<bean id="customUserDetailsService" class="com.radio.security.CustomUserDetailsService"></bean>
 	

@@ -135,7 +135,7 @@
 		  <div class="collapse navbar-collapse" id="navbarNav">
 		    <ul class="navbar-nav">
 		      <li class="nav-item active">
-	       		 <a class="nav-link" href="#">회원가입 <span class="sr-only">(current)</span></a>
+	       		 <a class="nav-link" href="/member/register">회원가입 <span class="sr-only">(current)</span></a>
 	      	</li>
 	      <sec:authorize access="isAnonymous()">
 		      <li class="nav-item">

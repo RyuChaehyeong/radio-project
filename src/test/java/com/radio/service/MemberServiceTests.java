@@ -1,13 +1,17 @@
-package com.radio.mapper;
+package com.radio.service;
 
+import static org.junit.Assert.*;
+
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import com.radio.domain.MemberVO;
 
+import com.radio.mapper.MemberMapperTests;
 
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
@@ -16,22 +20,19 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration(
 		{"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 @Log4j
-public class MemberMapperTests {
-	
+public class MemberServiceTests {
+
 	@Setter(onMethod_ = @Autowired)
-	private MemberMapper mapper;
+	private MemberService service;
 	
 	@Test
-	public void testRead() {
-		
-		MemberVO vo = mapper.read("admin9");
-		log.info(vo);
-		vo.getAuthList().forEach(authVO -> log.info(authVO));
+	public void testExist() {
+		assertNotNull(service);
 	}
-
+	
 	@Test
 	public void testUpdatePw() {
 		
-		log.info(mapper.updatePw("chaehyeong12", "71717711"));
+		log.info(service.updatePw("chaehyeong12", "qwe123!"));
 	}
 }
