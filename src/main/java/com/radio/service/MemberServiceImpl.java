@@ -15,8 +15,6 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
 
-	
-
 	public MemberMapper mapper;
 
 	@Override
@@ -37,6 +35,18 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int updatePw(String id, String password) {
 		return mapper.updatePw(id, password);
+	}
+
+	@Override
+	public String check_email(String email) {
+		return mapper.check_email(email);
+		
+	}
+	
+	@Override
+	public String check_id(String id) {
+		return mapper.check_id(id);
+		
 	}
 	
 }

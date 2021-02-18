@@ -19,4 +19,8 @@ public interface MemberMapper {
 	public int updatePw(
 			@Param("id") String id, 
 			@Param("password") String password);
+	
+	public String check_id(String id);
+	
+	public String check_email(String email);
 }

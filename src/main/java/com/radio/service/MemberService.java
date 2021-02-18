@@ -12,4 +12,8 @@ public interface MemberService {
 	public String get(String email);
 	
 	public int updatePw(String id, String password);
+	
+	public String check_email(String email);
+	
+	public String check_id(String id);
 }

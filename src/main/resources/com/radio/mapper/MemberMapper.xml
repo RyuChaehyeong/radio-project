@@ -32,7 +32,6 @@
 		where mem.member_id = #{id}
 	</select>
 
-<!-- register는 제꺼 쓰면 안대여 유라언니가 한거 써야댐!!!! -->
 	<insert id="register">
 		insert into tbl_member (member_name, member_id, member_password, member_email, member_address1, member_address2, member_address3, member_address4, member_grade, enabled)
 		values (#{name}, #{id}, #{password}, #{email}, #{add1}, #{add2}, #{add3}, #{add4}, 0, 1)
@@ -42,7 +41,6 @@
 		insert into tbl_member_auth (member_id, auth)
 		values (#{id}, #{auth})
 	</insert>
-<!-- register는 제꺼 쓰면 안대여 유라언니가 한거 써야댐!!!! -->
 
 	<select id="get" resultType="String">
 		select member_id
@@ -55,4 +53,14 @@
 		set member_password = #{password}
 		where member_id = #{id}
 	</update>
+	
+	<!-- 아이디 중복 검사 -->
+	<select id="check_id" resultType="String" parameterType="String">
+		SELECT count(*) FROM tbl_member WHERE member_id = #{id}
+	</select>
+	
+	<!-- 이메일 중복 검사 -->
+	<select id="check_email" resultType="String" parameterType="String">
+		SELECT count(*) FROM tbl_member WHERE member_email = #{email}
+	</select>
 </mapper>
