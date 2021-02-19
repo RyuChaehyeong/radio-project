@@ -222,7 +222,7 @@ public class MemberController {
 			}
 		}
 
-		String AuthenticationKey = temp.toString();
+		temp.toString();
 		model.addAttribute("AuthenticationKey", temp);
 
 		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
