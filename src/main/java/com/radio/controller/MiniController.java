@@ -39,8 +39,12 @@ public class MiniController {
 	@PreAuthorize("isAuthenticated()")
 	public String register(MiniVO mini, RedirectAttributes rttr) {
 		log.info(mini);
+		if (mini.getContent() == null || mini.getContent()=="") {
+			mini.setContent("안녕하세요!");
+		}
 		service.register(mini);
-		rttr.addFlashAttribute("result", "사연전송 완료");
+		log.info(mini);
+		rttr.addFlashAttribute("result", "mini 메세지 전송 완료!");
 		return "redirect:/mini/list";
 	}
 	

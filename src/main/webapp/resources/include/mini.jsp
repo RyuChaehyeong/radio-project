@@ -185,7 +185,7 @@ $(document).ready(function(){
 				
 				
 				  <div class="inp">				   
-				    <input name="content" type="text" class="input-content" id="inputContent" placeholder="오늘은 어떤 일이 있었나요?">
+				    <input name="content" type="text" class="input-content" id="inputContent" placeholder="오늘은 어떤 하루를 보냈나요?">
 				  </div>
 				  
 				  <div class="inp">
