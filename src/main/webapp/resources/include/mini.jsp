@@ -143,6 +143,8 @@
 		margin: 30px;
 		background-color: rgb(241, 241, 241);
 	}
+	
+	
 </style>
 
 <script type="text/javascript">
@@ -155,6 +157,16 @@ $(document).ready(function(){
 		
 		actionForm.submit();
 	});
+	
+	var result = '<c:out value="${result}"/>'
+	if (result) {
+		alert(result);
+	}
+	
+	var delMsg = '<c:out value="${delMsg}"/>'
+	if (delMsg) {
+		alert(delMsg);
+	}
 });
 </script>
 </head>
@@ -212,8 +224,16 @@ $(document).ready(function(){
 				     		<td><strong><c:out value="${mini.writer }"/></strong></td>
 				     		<td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value= "${mini.regdate }"/></td>
 				 		</tr>
-				 		<tr style="border-bottom: 2px white solid;">
+				 		<tr style="display: flex; justify-content: space-between; padding: 3px 10px 3px 10px; border-bottom: 2px white solid;" >
 				     		<td style="padding: 8px 5px 8px 10px; font-size: 14px"><c:out value="${mini.content }"/> </td>
+				     		<td style="padding: 8px 5px 8px 10px; font-size: 14px">
+				     		<form action="${root }/mini/remove/${mini.num}" method="post">
+								<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}"/>
+								<sec:authorize access="hasRole('ROLE_ADMIN')">
+									<input type="submit" value="삭제"/>		     		
+								</sec:authorize> 
+				     		</form>
+				     		</td>
 			    		</tr> 
 			 		</c:forEach>
 			  </tbody>

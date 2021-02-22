@@ -65,4 +65,9 @@ values (seq_mini.nextval, #{content}, #{writer})
 	select count(*) from tbl_mini
 	<include refid="criteria"></include>
 </select>
+
+<delete id="delete">
+	delete from tbl_mini
+	where num = #{num}
+</delete>
 </mapper>

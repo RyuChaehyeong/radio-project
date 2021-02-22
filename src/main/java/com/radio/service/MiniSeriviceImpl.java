@@ -40,4 +40,10 @@ public class MiniSeriviceImpl implements MiniService {
 		return mapper.getListWithPaging(cri);
 	}
 
+	@Override
+	public int delete(Long num) {
+		return mapper.delete(num);
+	}
+
+
 }

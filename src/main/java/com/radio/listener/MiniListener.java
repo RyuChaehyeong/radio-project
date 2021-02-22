@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebListener;
  * Application Lifecycle Listener implementation class MiniListener
  *
  */
-
+@WebListener
 public class MiniListener implements ServletContextListener {
 
     /**
@@ -31,7 +31,7 @@ public class MiniListener implements ServletContextListener {
      */
     public void contextInitialized(ServletContextEvent sce)  { 
     	ServletContext app = sce.getServletContext();
-    	
+	
         String contextRoot = app.getContextPath();
         
         app.setAttribute("root", contextRoot);

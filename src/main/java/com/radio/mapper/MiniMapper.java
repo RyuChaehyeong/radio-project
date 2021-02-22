@@ -17,4 +17,6 @@ public interface MiniMapper {
 	public void insertSelectKey(MiniVO mini);
 	
 	public int getTotalCount(Criteria cri);
+	
+	public int delete(Long num);
 }

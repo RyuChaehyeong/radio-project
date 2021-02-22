@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.radio.domain.Criteria;
@@ -44,9 +46,18 @@ public class MiniController {
 		}
 		service.register(mini);
 		log.info(mini);
-		rttr.addFlashAttribute("result", "mini 메세지 전송 완료!");
+		rttr.addFlashAttribute("result", mini.getWriter()+"님의 사연전송 완료!");
 		return "redirect:/mini/list";
 	}
 	
+	
+	@PostMapping("/remove/{num}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public String remove(@PathVariable("num") Long num, RedirectAttributes rttr) {
+		if (service.delete(num) == 1) {
+			rttr.addFlashAttribute("delMsg", num+"번 메시지 삭제완료");
+		}
+		return "redirect:/mini/list";
+	}
 	
 }

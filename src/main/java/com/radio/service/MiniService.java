@@ -13,5 +13,7 @@ public interface MiniService {
 	public void register(MiniVO mini);
 	
 	public int getTotal(Criteria cri);
+	
+	public int delete(Long num);
 
 }

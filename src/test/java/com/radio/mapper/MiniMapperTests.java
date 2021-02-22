@@ -57,4 +57,10 @@ public class MiniMapperTests {
 		log.info(mapper.getTotalCount());
 	}
 	*/
+	
+	@Test
+	public void testRemove() {
+		
+		log.info(mapper.delete(281L));
+	}
 }

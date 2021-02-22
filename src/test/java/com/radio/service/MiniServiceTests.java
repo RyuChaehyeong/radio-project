@@ -57,4 +57,9 @@ public class MiniServiceTests {
 		log.info(service.getTotal());
 	}
 	*/
+	
+	@Test
+	public void testDelete() {
+		log.info(service.delete(341L));
+	}
 }
